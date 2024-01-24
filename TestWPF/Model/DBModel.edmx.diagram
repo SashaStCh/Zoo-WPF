@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3ef3f489c04a4abc9b7fa49db8a55b13" Name="Diagram1">
+        <EntityTypeShape EntityType="ZooDBModel.Account" Width="1.5" PointX="1.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooDBModel.Animal" Width="1.5" PointX="5.375" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooDBModel.AnimalKind" Width="1.5" PointX="7.375" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooDBModel.AnimalProcess" Width="1.5" PointX="3.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooDBModel.Appointment" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooDBModel.Assay" Width="1.5" PointX="1.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooDBModel.Aviary" Width="1.5" PointX="7.375" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooDBModel.AviaryProcess" Width="1.5" PointX="5.375" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooDBModel.Care" Width="1.5" PointX="7.375" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooDBModel.Cleaning" Width="1.5" PointX="7.375" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooDBModel.Employee" Width="1.5" PointX="3.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooDBModel.Feeding" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooDBModel.Repair" Width="1.5" PointX="7.375" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooDBModel.Role" Width="1.5" PointX="1.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooDBModel.Training" Width="1.5" PointX="5.625" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooDBModel.Vaccination" Width="1.5" PointX="1.25" PointY="9.5" IsExpanded="true" />
+        <AssociationConnector Association="ZooDBModel.FK_Account_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="ZooDBModel.FK_Account_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="ZooDBModel.FK_Animal_AnimalKind" ManuallyRouted="false" />
+        <AssociationConnector Association="ZooDBModel.FK_Animal_Aviary1" ManuallyRouted="false" />
+        <AssociationConnector Association="ZooDBModel.FK_Process_Animal" ManuallyRouted="false" />
+        <AssociationConnector Association="ZooDBModel.FK_Assay_Process" ManuallyRouted="false" />
+        <AssociationConnector Association="ZooDBModel.FK_Care_Process" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="ZooDBModel.FK_Feeding_Process" ManuallyRouted="false" />
+        <AssociationConnector Association="ZooDBModel.FK_Process_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="ZooDBModel.FK_Training_Process" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="ZooDBModel.FK_Vaccination_Process" ManuallyRouted="false" />
+        <AssociationConnector Association="ZooDBModel.FK_Employee_Appointment" ManuallyRouted="false" />
+        <AssociationConnector Association="ZooDBModel.FK_AviaryProcess_Aviary" ManuallyRouted="false" />
+        <AssociationConnector Association="ZooDBModel.FK_AviaryProcess_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="ZooDBModel.FK_Cleaning_AviaryProcess" ManuallyRouted="false" />
+        <AssociationConnector Association="ZooDBModel.FK_Repair_AviaryProcess" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

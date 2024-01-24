@@ -1,0 +1,1055 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ZooDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Animal">
+          <Key>
+            <PropertyRef Name="AnimalID" />
+          </Key>
+          <Property Name="AnimalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnimalKindID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="AviaryID" Type="int" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="DeathDate" Type="date" />
+        </EntityType>
+        <EntityType Name="AnimalKind">
+          <Key>
+            <PropertyRef Name="AnimalKindID" />
+          </Key>
+          <Property Name="AnimalKindID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kind" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="AnimalProcess">
+          <Key>
+            <PropertyRef Name="AnimalProcessID" />
+          </Key>
+          <Property Name="AnimalProcessID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="AnimalID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="AppointmentID" />
+          </Key>
+          <Property Name="AppointmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Assay">
+          <Key>
+            <PropertyRef Name="AssayID" />
+          </Key>
+          <Property Name="AssayID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProcessID" Type="int" Nullable="false" />
+          <Property Name="AnimalStatus" Type="nvarchar" MaxLength="100" />
+          <Property Name="Diagnosis" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Aviary">
+          <Key>
+            <PropertyRef Name="AviaryID" />
+          </Key>
+          <Property Name="AviaryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="AviaryProcess">
+          <Key>
+            <PropertyRef Name="AviaryProcessID" />
+          </Key>
+          <Property Name="AviaryProcessID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AviaryID" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Care">
+          <Key>
+            <PropertyRef Name="CareID" />
+          </Key>
+          <Property Name="CareID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProcessID" Type="int" Nullable="false" />
+          <Property Name="CareType" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Cleaning">
+          <Key>
+            <PropertyRef Name="CleaningID" />
+          </Key>
+          <Property Name="CleaningID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AviaryProcessID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="100" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="AppointmentID" Type="int" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="12" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="200" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Feeding">
+          <Key>
+            <PropertyRef Name="FeedingID" />
+          </Key>
+          <Property Name="FeedingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProcessID" Type="int" Nullable="false" />
+          <Property Name="FoodType" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Repair">
+          <Key>
+            <PropertyRef Name="RepairID" />
+          </Key>
+          <Property Name="RepairID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AviaryProcessID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Training">
+          <Key>
+            <PropertyRef Name="TrainingID" />
+          </Key>
+          <Property Name="TrainingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProcessID" Type="int" Nullable="false" />
+          <Property Name="Command" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Vaccination">
+          <Key>
+            <PropertyRef Name="VaccinationID" />
+          </Key>
+          <Property Name="VaccinationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProcessID" Type="int" Nullable="false" />
+          <Property Name="DrugName" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK_Account_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Account_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Animal_AnimalKind">
+          <End Role="AnimalKind" Type="Self.AnimalKind" Multiplicity="1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnimalKind">
+              <PropertyRef Name="AnimalKindID" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="AnimalKindID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Animal_Aviary1">
+          <End Role="Aviary" Type="Self.Aviary" Multiplicity="1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aviary">
+              <PropertyRef Name="AviaryID" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="AviaryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Assay_Process">
+          <End Role="AnimalProcess" Type="Self.AnimalProcess" Multiplicity="1" />
+          <End Role="Assay" Type="Self.Assay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnimalProcess">
+              <PropertyRef Name="AnimalProcessID" />
+            </Principal>
+            <Dependent Role="Assay">
+              <PropertyRef Name="ProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AviaryProcess_Aviary">
+          <End Role="Aviary" Type="Self.Aviary" Multiplicity="1" />
+          <End Role="AviaryProcess" Type="Self.AviaryProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aviary">
+              <PropertyRef Name="AviaryID" />
+            </Principal>
+            <Dependent Role="AviaryProcess">
+              <PropertyRef Name="AviaryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AviaryProcess_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="AviaryProcess" Type="Self.AviaryProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="AviaryProcess">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Care_Process">
+          <End Role="AnimalProcess" Type="Self.AnimalProcess" Multiplicity="1" />
+          <End Role="Care" Type="Self.Care" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnimalProcess">
+              <PropertyRef Name="AnimalProcessID" />
+            </Principal>
+            <Dependent Role="Care">
+              <PropertyRef Name="ProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cleaning_AviaryProcess">
+          <End Role="AviaryProcess" Type="Self.AviaryProcess" Multiplicity="1" />
+          <End Role="Cleaning" Type="Self.Cleaning" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AviaryProcess">
+              <PropertyRef Name="AviaryProcessID" />
+            </Principal>
+            <Dependent Role="Cleaning">
+              <PropertyRef Name="AviaryProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Appointment">
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Appointment">
+              <PropertyRef Name="AppointmentID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="AppointmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feeding_Process">
+          <End Role="AnimalProcess" Type="Self.AnimalProcess" Multiplicity="1" />
+          <End Role="Feeding" Type="Self.Feeding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnimalProcess">
+              <PropertyRef Name="AnimalProcessID" />
+            </Principal>
+            <Dependent Role="Feeding">
+              <PropertyRef Name="ProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Process_Animal">
+          <End Role="Animal" Type="Self.Animal" Multiplicity="1" />
+          <End Role="AnimalProcess" Type="Self.AnimalProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="AnimalID" />
+            </Principal>
+            <Dependent Role="AnimalProcess">
+              <PropertyRef Name="AnimalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Process_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="AnimalProcess" Type="Self.AnimalProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="AnimalProcess">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Repair_AviaryProcess">
+          <End Role="AviaryProcess" Type="Self.AviaryProcess" Multiplicity="1" />
+          <End Role="Repair" Type="Self.Repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AviaryProcess">
+              <PropertyRef Name="AviaryProcessID" />
+            </Principal>
+            <Dependent Role="Repair">
+              <PropertyRef Name="AviaryProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Training_Process">
+          <End Role="AnimalProcess" Type="Self.AnimalProcess" Multiplicity="1" />
+          <End Role="Training" Type="Self.Training" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnimalProcess">
+              <PropertyRef Name="AnimalProcessID" />
+            </Principal>
+            <Dependent Role="Training">
+              <PropertyRef Name="ProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vaccination_Process">
+          <End Role="AnimalProcess" Type="Self.AnimalProcess" Multiplicity="1" />
+          <End Role="Vaccination" Type="Self.Vaccination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnimalProcess">
+              <PropertyRef Name="AnimalProcessID" />
+            </Principal>
+            <Dependent Role="Vaccination">
+              <PropertyRef Name="ProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ZooDBModelContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Animal" EntityType="Self.Animal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnimalKind" EntityType="Self.AnimalKind" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnimalProcess" EntityType="Self.AnimalProcess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Assay" EntityType="Self.Assay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Aviary" EntityType="Self.Aviary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AviaryProcess" EntityType="Self.AviaryProcess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Care" EntityType="Self.Care" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cleaning" EntityType="Self.Cleaning" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feeding" EntityType="Self.Feeding" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Repair" EntityType="Self.Repair" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Training" EntityType="Self.Training" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vaccination" EntityType="Self.Vaccination" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Account_Employee" Association="Self.FK_Account_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Account_Role" Association="Self.FK_Account_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Animal_AnimalKind" Association="Self.FK_Animal_AnimalKind">
+            <End Role="AnimalKind" EntitySet="AnimalKind" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Animal_Aviary1" Association="Self.FK_Animal_Aviary1">
+            <End Role="Aviary" EntitySet="Aviary" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Assay_Process" Association="Self.FK_Assay_Process">
+            <End Role="AnimalProcess" EntitySet="AnimalProcess" />
+            <End Role="Assay" EntitySet="Assay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AviaryProcess_Aviary" Association="Self.FK_AviaryProcess_Aviary">
+            <End Role="Aviary" EntitySet="Aviary" />
+            <End Role="AviaryProcess" EntitySet="AviaryProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AviaryProcess_Employee" Association="Self.FK_AviaryProcess_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="AviaryProcess" EntitySet="AviaryProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Care_Process" Association="Self.FK_Care_Process">
+            <End Role="AnimalProcess" EntitySet="AnimalProcess" />
+            <End Role="Care" EntitySet="Care" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cleaning_AviaryProcess" Association="Self.FK_Cleaning_AviaryProcess">
+            <End Role="AviaryProcess" EntitySet="AviaryProcess" />
+            <End Role="Cleaning" EntitySet="Cleaning" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Appointment" Association="Self.FK_Employee_Appointment">
+            <End Role="Appointment" EntitySet="Appointment" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feeding_Process" Association="Self.FK_Feeding_Process">
+            <End Role="AnimalProcess" EntitySet="AnimalProcess" />
+            <End Role="Feeding" EntitySet="Feeding" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Process_Animal" Association="Self.FK_Process_Animal">
+            <End Role="Animal" EntitySet="Animal" />
+            <End Role="AnimalProcess" EntitySet="AnimalProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Process_Employee" Association="Self.FK_Process_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="AnimalProcess" EntitySet="AnimalProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Repair_AviaryProcess" Association="Self.FK_Repair_AviaryProcess">
+            <End Role="AviaryProcess" EntitySet="AviaryProcess" />
+            <End Role="Repair" EntitySet="Repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Training_Process" Association="Self.FK_Training_Process">
+            <End Role="AnimalProcess" EntitySet="AnimalProcess" />
+            <End Role="Training" EntitySet="Training" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vaccination_Process" Association="Self.FK_Vaccination_Process">
+            <End Role="AnimalProcess" EntitySet="AnimalProcess" />
+            <End Role="Vaccination" EntitySet="Vaccination" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ZooDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Account_Employee" FromRole="Account" ToRole="Employee" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Account_Role" FromRole="Account" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Animal">
+          <Key>
+            <PropertyRef Name="AnimalID" />
+          </Key>
+          <Property Name="AnimalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnimalKindID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AviaryID" Type="Int32" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DeathDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="AnimalKind" Relationship="Self.FK_Animal_AnimalKind" FromRole="Animal" ToRole="AnimalKind" />
+          <NavigationProperty Name="Aviary" Relationship="Self.FK_Animal_Aviary1" FromRole="Animal" ToRole="Aviary" />
+          <NavigationProperty Name="AnimalProcess" Relationship="Self.FK_Process_Animal" FromRole="Animal" ToRole="AnimalProcess" />
+        </EntityType>
+        <EntityType Name="AnimalKind">
+          <Key>
+            <PropertyRef Name="AnimalKindID" />
+          </Key>
+          <Property Name="AnimalKindID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kind" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Animal" Relationship="Self.FK_Animal_AnimalKind" FromRole="AnimalKind" ToRole="Animal" />
+        </EntityType>
+        <EntityType Name="AnimalProcess">
+          <Key>
+            <PropertyRef Name="AnimalProcessID" />
+          </Key>
+          <Property Name="AnimalProcessID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="AnimalID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Animal" Relationship="Self.FK_Process_Animal" FromRole="AnimalProcess" ToRole="Animal" />
+          <NavigationProperty Name="Assay" Relationship="Self.FK_Assay_Process" FromRole="AnimalProcess" ToRole="Assay" />
+          <NavigationProperty Name="Care" Relationship="Self.FK_Care_Process" FromRole="AnimalProcess" ToRole="Care" />
+          <NavigationProperty Name="Feeding" Relationship="Self.FK_Feeding_Process" FromRole="AnimalProcess" ToRole="Feeding" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Process_Employee" FromRole="AnimalProcess" ToRole="Employee" />
+          <NavigationProperty Name="Training" Relationship="Self.FK_Training_Process" FromRole="AnimalProcess" ToRole="Training" />
+          <NavigationProperty Name="Vaccination" Relationship="Self.FK_Vaccination_Process" FromRole="AnimalProcess" ToRole="Vaccination" />
+        </EntityType>
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="AppointmentID" />
+          </Key>
+          <Property Name="AppointmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Appointment" FromRole="Appointment" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Assay">
+          <Key>
+            <PropertyRef Name="AssayID" />
+          </Key>
+          <Property Name="AssayID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcessID" Type="Int32" Nullable="false" />
+          <Property Name="AnimalStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Diagnosis" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AnimalProcess" Relationship="Self.FK_Assay_Process" FromRole="Assay" ToRole="AnimalProcess" />
+        </EntityType>
+        <EntityType Name="Aviary">
+          <Key>
+            <PropertyRef Name="AviaryID" />
+          </Key>
+          <Property Name="AviaryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Animal" Relationship="Self.FK_Animal_Aviary1" FromRole="Aviary" ToRole="Animal" />
+          <NavigationProperty Name="AviaryProcess" Relationship="Self.FK_AviaryProcess_Aviary" FromRole="Aviary" ToRole="AviaryProcess" />
+        </EntityType>
+        <EntityType Name="AviaryProcess">
+          <Key>
+            <PropertyRef Name="AviaryProcessID" />
+          </Key>
+          <Property Name="AviaryProcessID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AviaryID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Aviary" Relationship="Self.FK_AviaryProcess_Aviary" FromRole="AviaryProcess" ToRole="Aviary" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_AviaryProcess_Employee" FromRole="AviaryProcess" ToRole="Employee" />
+          <NavigationProperty Name="Cleaning" Relationship="Self.FK_Cleaning_AviaryProcess" FromRole="AviaryProcess" ToRole="Cleaning" />
+          <NavigationProperty Name="Repair" Relationship="Self.FK_Repair_AviaryProcess" FromRole="AviaryProcess" ToRole="Repair" />
+        </EntityType>
+        <EntityType Name="Care">
+          <Key>
+            <PropertyRef Name="CareID" />
+          </Key>
+          <Property Name="CareID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcessID" Type="Int32" Nullable="false" />
+          <Property Name="CareType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AnimalProcess" Relationship="Self.FK_Care_Process" FromRole="Care" ToRole="AnimalProcess" />
+        </EntityType>
+        <EntityType Name="Cleaning">
+          <Key>
+            <PropertyRef Name="CleaningID" />
+          </Key>
+          <Property Name="CleaningID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AviaryProcessID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AviaryProcess" Relationship="Self.FK_Cleaning_AviaryProcess" FromRole="Cleaning" ToRole="AviaryProcess" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AppointmentID" Type="Int32" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Account_Employee" FromRole="Employee" ToRole="Account" />
+          <NavigationProperty Name="AnimalProcess" Relationship="Self.FK_Process_Employee" FromRole="Employee" ToRole="AnimalProcess" />
+          <NavigationProperty Name="Appointment" Relationship="Self.FK_Employee_Appointment" FromRole="Employee" ToRole="Appointment" />
+          <NavigationProperty Name="AviaryProcess" Relationship="Self.FK_AviaryProcess_Employee" FromRole="Employee" ToRole="AviaryProcess" />
+        </EntityType>
+        <EntityType Name="Feeding">
+          <Key>
+            <PropertyRef Name="FeedingID" />
+          </Key>
+          <Property Name="FeedingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcessID" Type="Int32" Nullable="false" />
+          <Property Name="FoodType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AnimalProcess" Relationship="Self.FK_Feeding_Process" FromRole="Feeding" ToRole="AnimalProcess" />
+        </EntityType>
+        <EntityType Name="Repair">
+          <Key>
+            <PropertyRef Name="RepairID" />
+          </Key>
+          <Property Name="RepairID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AviaryProcessID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AviaryProcess" Relationship="Self.FK_Repair_AviaryProcess" FromRole="Repair" ToRole="AviaryProcess" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Account_Role" FromRole="Role" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="Training">
+          <Key>
+            <PropertyRef Name="TrainingID" />
+          </Key>
+          <Property Name="TrainingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcessID" Type="Int32" Nullable="false" />
+          <Property Name="Command" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AnimalProcess" Relationship="Self.FK_Training_Process" FromRole="Training" ToRole="AnimalProcess" />
+        </EntityType>
+        <EntityType Name="Vaccination">
+          <Key>
+            <PropertyRef Name="VaccinationID" />
+          </Key>
+          <Property Name="VaccinationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcessID" Type="Int32" Nullable="false" />
+          <Property Name="DrugName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AnimalProcess" Relationship="Self.FK_Vaccination_Process" FromRole="Vaccination" ToRole="AnimalProcess" />
+        </EntityType>
+        <Association Name="FK_Account_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Account_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Animal_AnimalKind">
+          <End Role="AnimalKind" Type="Self.AnimalKind" Multiplicity="1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnimalKind">
+              <PropertyRef Name="AnimalKindID" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="AnimalKindID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Animal_Aviary1">
+          <End Role="Aviary" Type="Self.Aviary" Multiplicity="1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aviary">
+              <PropertyRef Name="AviaryID" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="AviaryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Process_Animal">
+          <End Role="Animal" Type="Self.Animal" Multiplicity="1" />
+          <End Role="AnimalProcess" Type="Self.AnimalProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="AnimalID" />
+            </Principal>
+            <Dependent Role="AnimalProcess">
+              <PropertyRef Name="AnimalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Assay_Process">
+          <End Role="AnimalProcess" Type="Self.AnimalProcess" Multiplicity="1" />
+          <End Role="Assay" Type="Self.Assay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnimalProcess">
+              <PropertyRef Name="AnimalProcessID" />
+            </Principal>
+            <Dependent Role="Assay">
+              <PropertyRef Name="ProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Care_Process">
+          <End Role="AnimalProcess" Type="Self.AnimalProcess" Multiplicity="1" />
+          <End Role="Care" Type="Self.Care" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnimalProcess">
+              <PropertyRef Name="AnimalProcessID" />
+            </Principal>
+            <Dependent Role="Care">
+              <PropertyRef Name="ProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feeding_Process">
+          <End Role="AnimalProcess" Type="Self.AnimalProcess" Multiplicity="1" />
+          <End Role="Feeding" Type="Self.Feeding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnimalProcess">
+              <PropertyRef Name="AnimalProcessID" />
+            </Principal>
+            <Dependent Role="Feeding">
+              <PropertyRef Name="ProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Process_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="AnimalProcess" Type="Self.AnimalProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="AnimalProcess">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Training_Process">
+          <End Role="AnimalProcess" Type="Self.AnimalProcess" Multiplicity="1" />
+          <End Role="Training" Type="Self.Training" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnimalProcess">
+              <PropertyRef Name="AnimalProcessID" />
+            </Principal>
+            <Dependent Role="Training">
+              <PropertyRef Name="ProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vaccination_Process">
+          <End Role="AnimalProcess" Type="Self.AnimalProcess" Multiplicity="1" />
+          <End Role="Vaccination" Type="Self.Vaccination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnimalProcess">
+              <PropertyRef Name="AnimalProcessID" />
+            </Principal>
+            <Dependent Role="Vaccination">
+              <PropertyRef Name="ProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Appointment">
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Appointment">
+              <PropertyRef Name="AppointmentID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="AppointmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AviaryProcess_Aviary">
+          <End Role="Aviary" Type="Self.Aviary" Multiplicity="1" />
+          <End Role="AviaryProcess" Type="Self.AviaryProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aviary">
+              <PropertyRef Name="AviaryID" />
+            </Principal>
+            <Dependent Role="AviaryProcess">
+              <PropertyRef Name="AviaryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AviaryProcess_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="AviaryProcess" Type="Self.AviaryProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="AviaryProcess">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cleaning_AviaryProcess">
+          <End Role="AviaryProcess" Type="Self.AviaryProcess" Multiplicity="1" />
+          <End Role="Cleaning" Type="Self.Cleaning" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AviaryProcess">
+              <PropertyRef Name="AviaryProcessID" />
+            </Principal>
+            <Dependent Role="Cleaning">
+              <PropertyRef Name="AviaryProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Repair_AviaryProcess">
+          <End Role="AviaryProcess" Type="Self.AviaryProcess" Multiplicity="1" />
+          <End Role="Repair" Type="Self.Repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AviaryProcess">
+              <PropertyRef Name="AviaryProcessID" />
+            </Principal>
+            <Dependent Role="Repair">
+              <PropertyRef Name="AviaryProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ZooDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Account" EntityType="Self.Account" />
+          <EntitySet Name="Animal" EntityType="Self.Animal" />
+          <EntitySet Name="AnimalKind" EntityType="Self.AnimalKind" />
+          <EntitySet Name="AnimalProcess" EntityType="Self.AnimalProcess" />
+          <EntitySet Name="Appointment" EntityType="Self.Appointment" />
+          <EntitySet Name="Assay" EntityType="Self.Assay" />
+          <EntitySet Name="Aviary" EntityType="Self.Aviary" />
+          <EntitySet Name="AviaryProcess" EntityType="Self.AviaryProcess" />
+          <EntitySet Name="Care" EntityType="Self.Care" />
+          <EntitySet Name="Cleaning" EntityType="Self.Cleaning" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Feeding" EntityType="Self.Feeding" />
+          <EntitySet Name="Repair" EntityType="Self.Repair" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Training" EntityType="Self.Training" />
+          <EntitySet Name="Vaccination" EntityType="Self.Vaccination" />
+          <AssociationSet Name="FK_Account_Employee" Association="Self.FK_Account_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Account_Role" Association="Self.FK_Account_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Animal_AnimalKind" Association="Self.FK_Animal_AnimalKind">
+            <End Role="AnimalKind" EntitySet="AnimalKind" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Animal_Aviary1" Association="Self.FK_Animal_Aviary1">
+            <End Role="Aviary" EntitySet="Aviary" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Process_Animal" Association="Self.FK_Process_Animal">
+            <End Role="Animal" EntitySet="Animal" />
+            <End Role="AnimalProcess" EntitySet="AnimalProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Assay_Process" Association="Self.FK_Assay_Process">
+            <End Role="AnimalProcess" EntitySet="AnimalProcess" />
+            <End Role="Assay" EntitySet="Assay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Care_Process" Association="Self.FK_Care_Process">
+            <End Role="AnimalProcess" EntitySet="AnimalProcess" />
+            <End Role="Care" EntitySet="Care" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feeding_Process" Association="Self.FK_Feeding_Process">
+            <End Role="AnimalProcess" EntitySet="AnimalProcess" />
+            <End Role="Feeding" EntitySet="Feeding" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Process_Employee" Association="Self.FK_Process_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="AnimalProcess" EntitySet="AnimalProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Training_Process" Association="Self.FK_Training_Process">
+            <End Role="AnimalProcess" EntitySet="AnimalProcess" />
+            <End Role="Training" EntitySet="Training" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vaccination_Process" Association="Self.FK_Vaccination_Process">
+            <End Role="AnimalProcess" EntitySet="AnimalProcess" />
+            <End Role="Vaccination" EntitySet="Vaccination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Appointment" Association="Self.FK_Employee_Appointment">
+            <End Role="Appointment" EntitySet="Appointment" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AviaryProcess_Aviary" Association="Self.FK_AviaryProcess_Aviary">
+            <End Role="Aviary" EntitySet="Aviary" />
+            <End Role="AviaryProcess" EntitySet="AviaryProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AviaryProcess_Employee" Association="Self.FK_AviaryProcess_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="AviaryProcess" EntitySet="AviaryProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cleaning_AviaryProcess" Association="Self.FK_Cleaning_AviaryProcess">
+            <End Role="AviaryProcess" EntitySet="AviaryProcess" />
+            <End Role="Cleaning" EntitySet="Cleaning" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Repair_AviaryProcess" Association="Self.FK_Repair_AviaryProcess">
+            <End Role="AviaryProcess" EntitySet="AviaryProcess" />
+            <End Role="Repair" EntitySet="Repair" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ZooDBModelContainer" CdmEntityContainer="ZooDBEntities">
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="ZooDBModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Animal">
+            <EntityTypeMapping TypeName="ZooDBModel.Animal">
+              <MappingFragment StoreEntitySet="Animal">
+                <ScalarProperty Name="AnimalID" ColumnName="AnimalID" />
+                <ScalarProperty Name="AnimalKindID" ColumnName="AnimalKindID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AviaryID" ColumnName="AviaryID" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="DeathDate" ColumnName="DeathDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnimalKind">
+            <EntityTypeMapping TypeName="ZooDBModel.AnimalKind">
+              <MappingFragment StoreEntitySet="AnimalKind">
+                <ScalarProperty Name="AnimalKindID" ColumnName="AnimalKindID" />
+                <ScalarProperty Name="Kind" ColumnName="Kind" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnimalProcess">
+            <EntityTypeMapping TypeName="ZooDBModel.AnimalProcess">
+              <MappingFragment StoreEntitySet="AnimalProcess">
+                <ScalarProperty Name="AnimalProcessID" ColumnName="AnimalProcessID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="AnimalID" ColumnName="AnimalID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Appointment">
+            <EntityTypeMapping TypeName="ZooDBModel.Appointment">
+              <MappingFragment StoreEntitySet="Appointment">
+                <ScalarProperty Name="AppointmentID" ColumnName="AppointmentID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Assay">
+            <EntityTypeMapping TypeName="ZooDBModel.Assay">
+              <MappingFragment StoreEntitySet="Assay">
+                <ScalarProperty Name="AssayID" ColumnName="AssayID" />
+                <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+                <ScalarProperty Name="AnimalStatus" ColumnName="AnimalStatus" />
+                <ScalarProperty Name="Diagnosis" ColumnName="Diagnosis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Aviary">
+            <EntityTypeMapping TypeName="ZooDBModel.Aviary">
+              <MappingFragment StoreEntitySet="Aviary">
+                <ScalarProperty Name="AviaryID" ColumnName="AviaryID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AviaryProcess">
+            <EntityTypeMapping TypeName="ZooDBModel.AviaryProcess">
+              <MappingFragment StoreEntitySet="AviaryProcess">
+                <ScalarProperty Name="AviaryProcessID" ColumnName="AviaryProcessID" />
+                <ScalarProperty Name="AviaryID" ColumnName="AviaryID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Care">
+            <EntityTypeMapping TypeName="ZooDBModel.Care">
+              <MappingFragment StoreEntitySet="Care">
+                <ScalarProperty Name="CareID" ColumnName="CareID" />
+                <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+                <ScalarProperty Name="CareType" ColumnName="CareType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cleaning">
+            <EntityTypeMapping TypeName="ZooDBModel.Cleaning">
+              <MappingFragment StoreEntitySet="Cleaning">
+                <ScalarProperty Name="CleaningID" ColumnName="CleaningID" />
+                <ScalarProperty Name="AviaryProcessID" ColumnName="AviaryProcessID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="ZooDBModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="AppointmentID" ColumnName="AppointmentID" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feeding">
+            <EntityTypeMapping TypeName="ZooDBModel.Feeding">
+              <MappingFragment StoreEntitySet="Feeding">
+                <ScalarProperty Name="FeedingID" ColumnName="FeedingID" />
+                <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+                <ScalarProperty Name="FoodType" ColumnName="FoodType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Repair">
+            <EntityTypeMapping TypeName="ZooDBModel.Repair">
+              <MappingFragment StoreEntitySet="Repair">
+                <ScalarProperty Name="RepairID" ColumnName="RepairID" />
+                <ScalarProperty Name="AviaryProcessID" ColumnName="AviaryProcessID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="ZooDBModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Training">
+            <EntityTypeMapping TypeName="ZooDBModel.Training">
+              <MappingFragment StoreEntitySet="Training">
+                <ScalarProperty Name="TrainingID" ColumnName="TrainingID" />
+                <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+                <ScalarProperty Name="Command" ColumnName="Command" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vaccination">
+            <EntityTypeMapping TypeName="ZooDBModel.Vaccination">
+              <MappingFragment StoreEntitySet="Vaccination">
+                <ScalarProperty Name="VaccinationID" ColumnName="VaccinationID" />
+                <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+                <ScalarProperty Name="DrugName" ColumnName="DrugName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
